@@ -1,24 +1,56 @@
 ﻿# Rakenne ja toiminta
 
+ESKOn fyysinen rakenne määrittää samalla sen käskykannan toimintarajoitteet, 
+joten rakenteen tunteminen on oleellista ohjelmointimallin ymmärtämiseksi.
+
 ## Nauhanlukijat
 
-ESKO lukee ohjelmakoodin reikänauhoilta ja suorittaa sen käsky kerrallaan. Ohjelmakoodia ei ole mahdollista lukea keskusmuistiin ja suorittaa sieltä. Nauhanlukijoita on kaikkiaan 10 kpl ja käskyllä a n voidaan siirtyä nauhalta toiselle ja käskyllä a * palata edelliselle nauhalle. Täten eri nauhoille voidaan sijoittaa esim. aliohjelmia. Mikäli ohjelman halutaan muodostavan silmukkarakenteen, voidaan nauha liimata renkaaksi.
+ESKO lukee ohjelmakoodin reikänauhoilta ja suorittaa sen käsky kerrallaan. Ohjelmakoodia ei ole mahdollista lukea keskusmuistiin ja suorittaa sieltä. 
+Nauhanlukijoita on kaikkiaan 10 kpl ja käskyllä a n voidaan siirtyä nauhalta toiselle ja käskyllä a * palata edelliselle nauhalle. 
+Täten eri nauhoille voidaan sijoittaa esim. aliohjelmia. Mikäli ohjelman halutaan muodostavan silmukkarakenteen, voidaan nauha liimata renkaaksi.
 
-Nauhanlukijoita käytetään myös laskettavien lukujen sisäänvientiin. Tämä on välttämätöntä, sillä laskettavien lukujen on sijaittava keskusmuistissa. Tällöin sisäänvietävät luvut voidaan kirjoittaa nauhalle ESKOon kuuluvalla kirjoituskoneella ja ajaa toiselta nauhalta ohjelmaa, joka lukee luvut toiselta nauhalta ja sijoittaa ne muistiin haluttuun paikkaan.
+Nauhanlukijoita käytetään myös laskettavien lukujen sisäänvientiin. Tämä on välttämätöntä, sillä laskettavien lukujen on sijaittava keskusmuistissa. 
+Tällöin sisäänvietävät luvut voidaan kirjoittaa nauhalle ESKOon kuuluvalla kirjoituskoneella ja ajaa toiselta nauhalta ohjelmaa, 
+joka lukee luvut toiselta nauhalta ja sijoittaa ne muistiin haluttuun paikkaan.
 
 ## Muisti
 
-ESKOn muisti on pyörivä magneettirumpu, jonka pinnalle luvut varastoidaan. Muistirumpu jakautuu 30 uraan ja jokainen ura taas 60 sektoriin. Urat on numeroitu 00 .. 29 ja sektorit 00 .. 59. Muistin laajuus on siis 30 x 60 = 1 800 muistilokeroa. Tämän päämuistin lisäksi on ESKOlla ns. työmuisti, joka käsittää 40 muistilokeroa. Täten kaikkiaan voidaan 1840 lukua viedä muistiin.
+ESKOn muisti on pyörivä magneettirumpu, jonka pinnalle luvut varastoidaan. Muistirumpu jakautuu 30 uraan ja jokainen ura taas 60 sektoriin. 
+Urat on numeroitu 00 .. 29 ja sektorit 00 .. 59. Muistin laajuus on siis 30 x 60 = 1 800 muistilokeroa. 
+Tämän päämuistin lisäksi on ESKOlla ns. työmuisti, joka käsittää 40 muistilokeroa. Täten kaikkiaan voidaan 1840 lukua viedä muistiin.
 
 Muistiosoitteet ovat 2- tai 3-numeroisia. 2-numeroiset osoitteet ovat muotoa 60 .. 99 ja ne osoittavat em. työmuistiin.
 
-3-numeroisissa osoitteissa kaksi ensimmäistä numeroa kertovat osoitettavan sektorin numeron ja kolmas numero käytettävän uranvalitsimen. Uranvalitsimia on 10 kpl (0..9). Osoite 123 merkitsee siis sektorissa 12 olevaa muistilokeroa sillä uralla, johon uranvalitsija 3 on asetettu.
+3-numeroisissa osoitteissa kaksi ensimmäistä numeroa kertovat osoitettavan sektorin numeron ja kolmas numero käytettävän uranvalitsimen. 
+Uranvalitsimia on 10 kpl (0..9). Osoite 123 merkitsee siis sektorissa 12 olevaa muistilokeroa sillä uralla, johon uranvalitsija 3 on asetettu.
 
-Käskyllä v asetetaan haluttu uranvalitsin halutulle uralle. Tällä tavalla ESKO:n ohjelmoinnissa voidaan osoittaa kaikki 1840 muistipaikkaa käyttämällä vain kahta tai kolmea numeroa.
+Käskyllä v asetetaan haluttu uranvalitsin halutulle uralle. Tällä tavalla ESKO:n ohjelmoinnissa voidaan osoittaa kaikki 1840 muistipaikkaa 
+käyttämällä vain kahta tai kolmea numeroa.
+
+Lukujen muistiinvienti tapahtuu nauhanlukijan avulla. Muistiinvietävät luvut kirjoitetaan ESKOn laitteisiin kuuluvalla 
+kirjoituskoneella halutussa järjestyksessä. Tällöin merkitsee esim. 2345123p\02 lukua +0.2345123 . 10^2 ja 2345123n/05 lukua - 0.2345123 . 10^-5. 
+Mantissan jäljessä oleva kirjain p tai n ilmoittaa sen etumerkin (p = + ja n = -); 
+seuraavat merkit ilmoittavat eksponentin etumerkin ja sen itseisarvon. 
+Tällöin \ merkitsee positiivista ja / negatiivista etumerkkiä.
+
+Kirjoituskoneeseen yhdistetty nauhanlävistäjä lävistää luvut reikäkombinaatioina nauhalle. 
+Valmis lukunauha ja muistiinvientiohjelman nauha asetetaan nauhanlukijalle, jolloin ESKO ohjelman mukaisesti vie luvut muistirummulle.
+
+Muistiinvienti voi tapahtua myös suoraan kirjoituskoneen välityksellä ilman nauhalle rei'itystä. 
+Tällöin täytyy aina luvun jälkeen kirjoittaa asianomaiset muistiinvientikäskyt. 
+Tämä tapa on hidas edelliseen verrattuna, mutta voidaan käyttää esim. vietäessä vakioita työmuistiin.
+
 
 ## Laskenta
 
-ESKO laskee sisäisesti binäärijärjestelmässä, mutta laskun alkaessa lukuja koneeseen vietäessä ei niitä tarvitse erikseen muuttaa desimaalijärjestelmästä mainittuun järjestelmään. Luvut annetaan desimaalijärjestelmässä ja kone itse muuttaa ne binäärijärjestelmään. Samoin lopputulokset saadaan muutettuina desimaalijärjestelmään. Luvut viedään koneeseen ns. puolilogaritmisina, eli muodossa a * 10<sup>b</sup>, jossa mantissa a on välillä -1 .. +1 sekä voi normaalitapauksessa käsittää korkeintaan 13 desimaalia. Eksponentti b voi vaihdella välillä ±38. ESKO pystyy laskemaan sekä liikkuvalla pilkulla, jolloin eksponentti b voi vaihdella, että kiinteällä pilkulla, jolloin b on nolla.
+ESKO laskee sisäisesti binäärijärjestelmässä, mutta laskun alkaessa lukuja koneeseen vietäessä ei niitä 
+tarvitse erikseen muuttaa desimaalijärjestelmästä mainittuun järjestelmään. 
+Luvut annetaan desimaalijärjestelmässä ja kone itse muuttaa ne binäärijärjestelmään. 
+Samoin lopputulokset saadaan muutettuina desimaalijärjestelmään. Luvut viedään koneeseen ns. 
+puolilogaritmisina, eli muodossa a * 10<sup>b</sup>, jossa mantissa a on välillä -1 .. +1 
+sekä voi normaalitapauksessa käsittää korkeintaan 13 desimaalia. 
+Eksponentti b voi vaihdella välillä ±38. ESKO pystyy laskemaan sekä liikkuvalla pilkulla, 
+jolloin eksponentti b voi vaihdella, että kiinteällä pilkulla, jolloin b on nolla.
 
 ## Tulostus
 
@@ -31,13 +63,25 @@ kirjoituksen aikana suorittamaan jo seuraavaa käskyä. Täten kirjoituskäskyj�
 
 ## Substituutio
 
-Erityisellä tulostuskäskyllä (k n9) voidaan korvata (substituoida) ohjelmakoodissa olevia osoitteita laskennan perusteella. Käsky siirtää tulostettavan luvun desimaalimuodossa ns. tulosrekisteriin varsinaisesti tulostamatta sitä ja ESKO jatkaa käskyjen suorittamista normaalisti kunnes löytää käskyn, jossa osoitteen numeroita on korvattu *-merkillä. Tällöin nämä osoitteen *-merkit korvataan em. rekisterissä olevan luvun desimaaleilla. Käskyn k n9 ei tarvitse olla välittömästi sen käskyn edellä, johon sijoitus tapahtuu, vaan välillä saa olla miten monta käskyä tahansa. Sijoitus suoritetaan heti ensimmäiseen käskyyn, jossa *-merkki on, eikä enää muihin käskyihin.
+Erityisellä tulostuskäskyllä (k n9) voidaan korvata (substituoida) ohjelmakoodissa olevia osoitteita laskennan perusteella. 
+Käsky siirtää tulostettavan luvun desimaalimuodossa ns. tulosrekisteriin varsinaisesti tulostamatta sitä ja ESKO jatkaa 
+käskyjen suorittamista normaalisti kunnes löytää käskyn, jossa osoitteen numeroita on korvattu *-merkillä. 
+Tällöin nämä osoitteen *-merkit korvataan em. rekisterissä olevan luvun desimaaleilla. 
+Käskyn k n9 ei tarvitse olla välittömästi sen käskyn edellä, johon sijoitus tapahtuu, vaan välillä saa olla miten 
+monta käskyä tahansa. Sijoitus suoritetaan heti ensimmäiseen käskyyn, jossa *-merkki on, eikä enää muihin käskyihin.
 
-Substituutiota voi käyttää myös lukijalaitteiden valintaan. Jos käskyn k n9 jälkeen tulee käsky a *, määrittää tulosrekisterissä sillä hekellä olevan luvun ensimmäinen numero käynnistyvän lukijalaitteen. Näin laskutoimituksen perusteella on mahdollista vaihtaa mihin aliohjelmaan siirrytään.
+Substituutiota voi käyttää myös lukijalaitteiden valintaan. Jos käskyn k n9 jälkeen tulee käsky a *, 
+määrittää tulosrekisterissä sillä hekellä olevan luvun ensimmäinen numero käynnistyvän lukijalaitteen. 
+Näin laskutoimituksen perusteella on mahdollista vaihtaa mihin aliohjelmaan siirrytään.
 
 ## Syklinen permutaatio
 
-Käskyllä s nN saadaan aikaan ns. syklinen permutaatio. Urassa, joka on kytketty valitsijaan N vaihdetaan sektorien 1 .. n sisältö siten, että sektorin 2 sisältö kirjoitetaan 1:een, sektorin 3 sisältö 2:een jne. Vaikka ESKO:sta puuttuu varsinainen osoitinaritmetiikka, tällä käskyllä voidaan tätä puutetta hieman kiertää. Sen sijaan, että osoitetta inkrementoitaisiin, muutetaankin itse muistin sisältöä.
+Käskyllä s nN saadaan aikaan ns. syklinen permutaatio. 
+Urassa, joka on kytketty valitsijaan N vaihdetaan sektorien 1 .. n sisältö siten, 
+että sektorin 2 sisältö kirjoitetaan 1:een, sektorin 3 sisältö 2:een jne. 
+
+Vaikka ESKO:sta puuttuu varsinainen osoitinaritmetiikka, tällä käskyllä voidaan tätä puutetta hieman kiertää. 
+Sen sijaan, että osoitetta inkrementoitaisiin, muutetaankin itse muistin sisältöä.
 
 # Käskykanta
 
