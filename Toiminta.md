@@ -45,7 +45,7 @@ Käskyllä s nN saadaan aikaan ns. syklinen permutaatio. Urassa, joka on kytkett
 
 | Käsky | Kuvaus |
 |-------|--------|
-| + n | Laske luvut yhteen akusta ja muistiosoitteessa n. Tulos tallennetaan akkuun|
+| + n | Laske luvut yhteen akusta ja muistiosoitteessa n. Tulos tallennetaan akkuun.|
 | - n | Vähennä akusta luku osoitteesta n ja tallenna tulos akkuun.|
 | m nm| (akk) + (n) * (m) → akk|
 | <u>m</u> nm| (akk) - (n) * (m) → akk|
@@ -57,135 +57,63 @@ Käskyllä s nN saadaan aikaan ns. syklinen permutaatio. Urassa, joka on kytkett
 
 ## Talletusoperaatiot
 
-{| {{prettytable}}
-! Käsky
-! Kuvaus
-|-
-| °→ n
-| Siirrä luku akusta muistiosoitteeseen n. Nollaa akku.
-|-
-| → n
-| Siirrä luku akusta muistiosoitteeseen n.
-|-
-| s nN
-| Syklinen permutaatio
-|-
-| v xn
-| Kytke uranvalitsija x uraan n. (x: 0-9, n: 0-29)
-|-
-| *
-| Varusta seuraavan °→n tai →n käskyn luku tunnusmerkillä
-|}
+| Käsky | Kuvaus |
+|-------|--------|
+| °→ n| Siirrä luku akusta muistiosoitteeseen n. Nollaa akku.
+| → n | Siirrä luku akusta muistiosoitteeseen n.
+| s nN | Syklinen permutaatio
+| v xn | Kytke uranvalitsija x uraan n. (x: 0-9, n: 0-29)
+|  * | Varusta seuraavan °→n tai →n käskyn luku tunnusmerkillä
 
 ## Kirjoitusoperaatiot
 
-{| {{prettytable}}
-! Käsky
-! Kuvaus
-|-
-| k nw
-| Kirjoita (akk) esille (1/2)n desimaalin tarkkuudella sellaisesa muodossa kuin w osoittaa; akk nollataan.
-|-
-| k n0-3
-| Kirjoitetaan luku kirjoittimella.
-|-
-| k n4-8
-| Rei'itetään luku reikänauhanlävistimellä.
-|-
-| k n9
-| Substituutiota edeltävä käsky.
-|-
-|t
-| Tabulointi
-|-
-| at
-| Kirjoituskoneen telavaunun palautus
-|}
+| Käsky | Kuvaus |
+|-------|--------|
+| k nw| Kirjoita (akk) esille (1/2)n desimaalin tarkkuudella sellaisesa muodossa kuin w osoittaa; akk nollataan.
+| k n0-3| Kirjoitetaan luku kirjoittimella.
+| k n4-8| Rei'itetään luku reikänauhanlävistimellä.
+| k n9| Substituutiota edeltävä käsky.
+|t| Tabulointi
+| at| Kirjoituskoneen telavaunun palautus
 
 ## Nauhanlukijoiden ohjaus
 
-{| {{prettytable}}
-! Käsky
-! Kuvaus
-|-
-| a n
-| Käynnistä lukijalaite n (n = 0...9)
-|-
-| a *
-| Käynnistä äsken käynnissä ollut (edellinen) lukijalaite (Huom: * tai e luvun lopussa sisään syöttäessä saa aikaan käskyn a *)
-|-
-| aa
-| Pysähdy
-|-
-| c
-| Pysähdy, jos katkaisija "c" on valvontapöydässä "on" asennossa.
-|}
+| Käsky | Kuvaus |
+|-------|--------|
+| a n| Käynnistä lukijalaite n (n = 0...9)
+| a *| Käynnistä äsken käynnissä ollut (edellinen) lukijalaite (Huom: * tai e luvun lopussa sisään syöttäessä saa aikaan käskyn a *)
+| aa| Pysähdy
+| c| Pysähdy, jos katkaisija "c" on valvontapöydässä "on" asennossa.
 
 ## Hyppykäskyt
 
-{| {{prettytable}}
-! Käsky
-! Kuvaus
-|-
-| ee
-| Ehdollisen hypyn loppu
-|-
-| e 0
-| Jos mant. etumerkki on akussa negatiivinen, hyppää seuraavaan ee:hen.
-|-
-| e 1
-| Jos mant. etumerkki on akussa positiivinen, hyppää seuraavaan ee:hen.
-|-
-| e 2
-| Jos eksponentin etumerkki on akussa negatiivinen: hyppää seuraavaan ee:hen.
-|-
-| e 3
-| Jos eksponentin etumerkki on akussa positiivinen: hyppää seuraavaan ee:hen.
-|-
-| e 4
-| Jos viimeksi muistista luettu luku ei ollut varustettu tunnusmerkillä tai käsky * ei ollut annettu juuri edellä: hyppää seuraavaan ee:hen.
-|-
-| e 5
-| Jos viimeksi muistista luettu luku oli varustettu tunnusmerkillä tai käsky * ei ollut annettu juuri edellä: hyppää seuraavaan ee:hen.
-|-
-| e 6
-| Jos suuntaaja S 1 on valvontapöydässä "on"-asennossa: hyppää seuraavaan ee:hen.
-|-
-|e 7
-| Jos suuntaaja S 2 on valvontapöydässä "on"-asennossa: hyppää seuraavaan ee:hen.
-|}
+| Käsky | Kuvaus |
+|-------|--------|
+| ee| Ehdollisen hypyn loppu
+| e 0| Jos mant. etumerkki on akussa negatiivinen, hyppää seuraavaan ee:hen.
+| e 1| Jos mant. etumerkki on akussa positiivinen, hyppää seuraavaan ee:hen.
+| e 2| Jos eksponentin etumerkki on akussa negatiivinen: hyppää seuraavaan ee:hen.
+| e 3| Jos eksponentin etumerkki on akussa positiivinen: hyppää seuraavaan ee:hen.
+| e 4| Jos viimeksi muistista luettu luku ei ollut varustettu tunnusmerkillä tai käsky * ei ollut annettu juuri edellä: hyppää seuraavaan ee:hen.
+| e 5| Jos viimeksi muistista luettu luku oli varustettu tunnusmerkillä tai käsky * ei ollut annettu juuri edellä: hyppää seuraavaan ee:hen.
+| e 6| Jos suuntaaja S 1 on valvontapöydässä "on"-asennossa: hyppää seuraavaan ee:hen.
+|e 7| Jos suuntaaja S 2 on valvontapöydässä "on"-asennossa: hyppää seuraavaan ee:hen.
 
 ## Laskutapaa koskevat käskyt
 
-{| {{prettytable}}
-! Käsky
-! Kuvaus
-|-
-| av0
-| Laske käyttäen yksinkertaista mantissan pituutta ja liikkuvaa pilkkua.
-|-
-| av1
-| Laske käyttäen kaksinkertaista mantissan pituutta ja liikkuvaa pilkkua.
-|-
-| av2
-| Laske käyttäen yksinkertaista mantissan pituutta ja kiinteää pilkkua.
-|-
-| av3
-| Laske käyttäen kaksinkertaista mantissan pituutta ja kiinteää pilkkua.
-|-
-| av4
-| Rei'itä kaikki seuraavat käskyt e:hen asti, vieläpä e, suorittamatta niitä.
-|}
+| Käsky | Kuvaus |
+|-------|--------|
+| av0| Laske käyttäen yksinkertaista mantissan pituutta ja liikkuvaa pilkkua.
+| av1| Laske käyttäen kaksinkertaista mantissan pituutta ja liikkuvaa pilkkua.
+| av2| Laske käyttäen yksinkertaista mantissan pituutta ja kiinteää pilkkua.
+| av3| Laske käyttäen kaksinkertaista mantissan pituutta ja kiinteää pilkkua.
+| av4| Rei'itä kaikki seuraavat käskyt e:hen asti, vieläpä e, suorittamatta niitä.
 
 ## Korjaus
 
-{| {{prettytable}}
-! Käsky
-! Kuvaus
-|-
-| f
-| Virheellisen lävistyksen poisto. Tämä merkki ei vaikuta koneeseen lainkaan.
-|}
+| Käsky | Kuvaus |
+|-------|--------|
+| f| Virheellisen lävistyksen poisto. Tämä merkki ei vaikuta koneeseen lainkaan.
 
 # Lähteet
 
