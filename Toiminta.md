@@ -44,15 +44,16 @@ Käskyllä s nN saadaan aikaan ns. syklinen permutaatio. Urassa, joka on kytkett
 ## Aritmeettiset operaatiot
 
 | Käsky | Kuvaus |
-| + n | Laske luvut yhteen akusta ja muistiosoitteessa n. Tulos tallennetaan akkuun
-| - n | Vähennä akusta luku osoitteesta n ja tallenna tulos akkuun.
-| m nm| (akk) + (n) * (m) → akk
-| <u>m</u> nm| (akk) - (n) * (m) → akk
-| x n	| (akk) * (n) → akk
-| <u>x</u> n| -(akk) * (n) → akk
-| : n| (akk) : (n) → akk
-| j| neliöjuuri(akk) -> akk
-| r| Ota itseisarvo akusta ja tallenna akkuun.
+|-------|--------|
+| + n | Laske luvut yhteen akusta ja muistiosoitteessa n. Tulos tallennetaan akkuun|
+| - n | Vähennä akusta luku osoitteesta n ja tallenna tulos akkuun.|
+| m nm| (akk) + (n) * (m) → akk|
+| <u>m</u> nm| (akk) - (n) * (m) → akk|
+| x n	| (akk) * (n) → akk|
+| <u>x</u> n| -(akk) * (n) → akk|
+| : n| (akk) : (n) → akk|
+| j| neliöjuuri(akk) -> akk|
+| r| Ota itseisarvo akusta ja tallenna akkuun.|
 
 ## Talletusoperaatiot
 
